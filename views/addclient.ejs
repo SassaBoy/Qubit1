@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Client</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #088F8F;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    section {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input,
+    button {
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #088F8F;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #006666;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px;
+      margin-top: 5px;
+    }
+
+    li span {
+      display: flex;
+      align-items: center;
+      margin-left: 10px;
+      cursor: pointer;
+      color: #ff0000;
+    }
+
+    li button {
+      background-color: #ff0000;
+      color: #fff;
+      border: none;
+      padding: 5px;
+      margin-left: 5px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    li button:hover {
+      background-color: #cc0000;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Add Client</h1>
+  </header>
+
+  <section>
+    <form action="/addclient" method="post" enctype="multipart/form-data">
+      <label for="name">Client Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="logo">Client Logo:</label>
+      <input type="file" id="logo" name="logo" accept="image/*" required>
+
+      <button type="submit">Upload Client</button>
+    </form>
+
+    <!-- Display existing clients if any -->
+    <% if (clients.length > 0) { %>
+      <h3>Existing Clients:</h3>
+      <ul>
+        <% clients.forEach(client => { %>
+          <li>
+            <span onclick="deleteClient('<%= client._id %>')">Delete</span>
+            <%= client.name %>
+            <button onclick="deleteClient('<%= client._id %>')">Delete</button>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No clients available at the moment.</p>
+    <% } %>
+  </section>
+
+  <script>
+    function deleteClient(clientId) {
+      if (confirm('Are you sure you want to delete this client?')) {
+        window.location.href = `/deleteclient/${clientId}`;
+      }
+    }
+  </script>
+</body>
+
+</html>

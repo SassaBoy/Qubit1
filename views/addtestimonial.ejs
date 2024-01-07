@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Testimonial</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    h1 {
+      background-color: #088F8F;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    form {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    textarea,
+    input,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #088F8F;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #006666;
+    }
+
+    .testimonial-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .testimonial-item {
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #f00;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Add Testimonial</h1>
+  <form action="/addtestimonial" method="post">
+    <label for="quote">Quote:</label>
+    <textarea name="quote" id="quote" required></textarea>
+    <label for="author">Author:</label>
+    <input type="text" name="author" id="author" required>
+    <label for="company">Company:</label>
+    <input type="text" name="company" id="company" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Display existing testimonials with delete button if any -->
+  <h3>Existing Testimonials:</h3>
+  <ul class="testimonial-list">
+    <% testimonials.forEach(testimonial => { %>
+      <li class="testimonial-item">
+        <p><strong>Quote:</strong> <%= testimonial.quote %></p>
+        <p><strong>Author:</strong> <%= testimonial.author %></p>
+        <p><strong>Company:</strong> <%= testimonial.company %></p>
+        <!-- Add delete form for each testimonial -->
+        <form action="/deletetestimonial/<%= testimonial._id %>" method="post">
+          <button type="submit" class="delete-btn">Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+
+</body>
+
+</html>
