@@ -1370,7 +1370,9 @@ section {
 .team {
   background-color: #f8f9fa;
   padding: 60px 0;
+ 
 }
+
 
 .member {
   text-align: center;
@@ -1380,6 +1382,7 @@ section {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+  
 }
 
 .member:hover {
@@ -1388,10 +1391,11 @@ section {
 
 .member img {
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 8px;
   transition: transform 0.3s ease-in-out;
 }
+
 
 .member:hover img {
   transform: scale(1.1);
