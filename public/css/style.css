@@ -215,10 +215,16 @@ h6 {
   margin-left: 5px;
 }
 
-.navbar a:hover,
+
 .navbar .active,
-.navbar .active:focus,
-.navbar li:hover>a {
+.navbar .active:focus
+ {
+  color: white;
+  background:  #067c7c; /* Set the border properties as needed */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  padding: 8px 12px; /* Optional: Adjust padding */
+}
+.navbar li:hover{
   color: #067c7c;
 }
 
@@ -1015,56 +1021,62 @@ section {
   }
 }
 
-/* Add styles specific to the clients section */
+/* Add your own styles based on your design */
 #clients {
-  padding: 50px 0; /* Add space at the top and bottom */
-  margin-bottom: 70px;
-  margin-top: 70px;
+  background-color: #f8f8f8;
+  padding: 60px 0;
+}
+
+.section-header h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.section-header p {
+  font-size: 1.2em;
+  color: #777;
+  margin-bottom: 40px;
 }
 
 .clients-slider {
   position: relative;
-  overflow: hidden;
-  max-width: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  padding: 20px;
+  width: auto;
+  
+}
+.swiper-slide img{
+
   height: 200px;
 }
 
-/* Adjust the selector to target the specific clients swiper */
-#clients .swiper-wrapper {
+.swiper-pagination {
+  position: absolute;
+  margin-top: 100px;
+  transform: translateX(-50%);
+  width: auto; /* Set width to auto to center the pagination bullets */
   display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: center; /* Center the content horizontally */
-  height: 100%; /* Set height to 100% for vertical centering */
+  margin-left: 50%; /* Add this line to move the container to the right */
+}
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #088F8F; /* Change to your desired bullet color */
+  border-radius: 50%;
+ 
+  opacity: 0.7;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-#clients .swiper-slide {
-  flex: 0 0 auto;
-  width: auto;
-  text-align: center;
-}
-
-#clients .swiper-slide img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
-#clients .swiper-pagination {
-  margin-top: 40px; /* Adjust the margin-top value */
-}
-
-#clients .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #fff;
+.swiper-pagination-bullet-active {
+  background-color: #088F8F; /* Change to your desired active bullet color */
   opacity: 1;
-  border: 1px solid #088F8F;
-  margin-bottom: -10px;
-
-}
-
-#clients .swiper-pagination-bullet-active {
-  background-color: #088F8F;
 }
 
 
