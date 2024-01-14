@@ -115,6 +115,8 @@
     this.classList.toggle('bi-x')
   })
 
+// Smooth scrolling on the navbar links
+
 
   /**
    * Mobile nav dropdowns activate
