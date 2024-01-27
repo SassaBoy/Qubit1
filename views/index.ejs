@@ -332,53 +332,58 @@
 <!-- Add this code to your index.ejs file -->
 <section id="portfolio" class="portfolio" style="margin-top: 70px; margin-bottom: 70px;">
   <div class="container" data-aos="fade-up">
-    <div class="section-header">
-      <h2>Work</h2>
-      <p>Experience our impressive portfolio of web development projects that highlight our expertise and creativity in delivering exceptional digital solutions.</p>
-    </div>
-
-    <div class="row" data-aos="fade-up" data-aos-delay="100">
-      <div class="col-lg-12 d-flex justify-content-center">
-        <ul id="portfolio-flters">
-          <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-graphics">Graphic Design</li>
-          <li data-filter=".filter-websites">Websites</li>
-        </ul>
+      <div class="section-header">
+          <h2>Work</h2>
+          <p>Experience our impressive portfolio of web development projects that highlight our expertise and creativity in delivering exceptional digital solutions.</p>
       </div>
-    </div>
 
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-      <% galleryItems.slice().reverse().forEach(item => { %>
-        <div class="col-lg-4 col-md-6 portfolio-item filter-<%= item.category %>">
-          <% if (item.category === 'graphics') { %>
-            <!-- Show a different image for the 'Graphics' category -->
-            <div class="portfolio-image">
-              <img src="/uploads/<%= item.image %>" class="img-fluid" alt="<%= item.title %>">
-              <div class="portfolio-links">
-                <a href="/uploads/<%= item.image %>" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
-              </div>
-            </div>
-            
-          <% } else if (item.screenshotPath) { %>
-            <!-- Show the screenshot for categories other than 'Graphics' -->
-            <div class="portfolio-image" >
-              <img src="<%= item.screenshotPath %>" class="img-fluid" alt="<%= item.title %>">
-              <div class="portfolio-info">
-                <h4><%= item.title %></h4>
-                <a href="<%= item.link %>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-              </div>
-              <div class="zoom-icon" style="display: none;">
-                <i class="bx bx-zoom-in"></i>
-              </div>
-            </div>
+      <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+              <ul id="portfolio-flters">
+                  <li data-filter="*" class="filter-active">All</li>
+                  <li data-filter=".filter-graphics">Graphic Design</li>
+                  <li data-filter=".filter-websites">Websites</li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          <% if (galleryItems.length > 0) { %>
+              <% galleryItems.slice().reverse().forEach(item => { %>
+                  <div class="col-lg-4 col-md-6 portfolio-item filter-<%= item.category %>">
+                      <% if (item.category === 'graphics') { %>
+                          <!-- Show a different image for the 'Graphics' category -->
+                          <div class="portfolio-image">
+                              <img src="/uploads/<%= item.image %>" class="img-fluid" alt="<%= item.title %>">
+                              <div class="portfolio-links">
+                                  <a href="/uploads/<%= item.image %>" data-gallery="portfolioGallery" class="portfolio-lightbox"><i class="bx bx-plus"></i></a>
+                              </div>
+                          </div>
+                      <% } else if (item.screenshotPath) { %>
+                          <!-- Show the screenshot for categories other than 'Graphics' -->
+                          <div class="portfolio-image">
+                              <img src="<%= item.screenshotPath %>" class="img-fluid" alt="<%= item.title %>">
+                              <div class="portfolio-info">
+                                  <h4><%= item.title %></h4>
+                                  <a href="<%= item.link %>" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                              </div>
+                              <div class="zoom-icon" style="display: none;">
+                                  <i class="bx bx-zoom-in"></i>
+                              </div>
+                          </div>
+                      <% } else { %>
+                          <p>No screenshot available</p>
+                      <% } %>
+                  </div>
+              <% }) %>
           <% } else { %>
-            <p>No screenshot available</p>
+              <div class="col-lg-12">
+                  <p style="text-align: center; font-size: 18px; color: #333;">Portolio coming soon.</p>
+              </div>
           <% } %>
-        </div>
-      <% }) %>
-    </div>
+      </div>
   </div>
-
+</section>
 
 
     
